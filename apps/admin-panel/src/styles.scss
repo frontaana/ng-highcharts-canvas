@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+// /* You can add global styles to this file, and also import other style files */
+@import "modern-normalize/modern-normalize.css";
+
+// *, *::before, *::after {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box; // Чтобы padding не раздувал ширину элементов
+// }
+
+// html, body {
+//   height: 100%; // Полезно для Angular-приложений
+// }
+
+// ul, ol {
+//   list-style: none;
+// }
+
+// a {
+//   text-decoration: none;
+//   color: inherit; // Ссылка будет цвета родительского текста
+// }
+
+// button {
+//   background: none;
+//   border: none;
+//   padding: 0;
+//   cursor: pointer;
+//   font: inherit; // Кнопка наследует шрифт сайта
+// }
+
+// input {
+//   font: inherit;
+// }

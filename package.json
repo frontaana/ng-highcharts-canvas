@@ -2,13 +2,13 @@
   "name": "ng-highcharts-canvas",
   "version": "0.0.0",
   "scripts": {
-  "start:admin": "nx serve admin-panel",
-  "start:charts": "nx serve highcharts-app",
-  "build": "nx build --watch",
-  "test": "nx test",
-  "graph": "nx graph",
-  "help": "nx help"
-},
+    "start:admin": "nx serve admin-panel",
+    "start:charts": "nx serve highcharts-app",
+    "build": "nx build --watch",
+    "test": "nx test",
+    "graph": "nx graph",
+    "help": "nx help"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.0",
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "modern-normalize": "^3.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
