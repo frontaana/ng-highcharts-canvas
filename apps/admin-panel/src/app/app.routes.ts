@@ -1,8 +1,22 @@
 import { Route } from '@angular/router';
+import { RouteName } from './app.consts';
 
 export const appRoutes: Route[] = [
+  { path: '', redirectTo: RouteName.taskManager, pathMatch: 'full' },
   {
-    path: '',
-    loadChildren: () => import('./components/task-manager/task-manager.routes').then(m => m.TASK_ROUTES)
-  }
+    path: RouteName.taskManager,
+    loadComponent: () =>
+      import('./components/task-manager/task-manager.component').then(
+        (c) => c.TaskManagerComponent
+      ),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./components/task-list/task-list.component').then(
+            (c) => c.TaskListComponent
+          ),
+      },
+    ],
+  },
 ];

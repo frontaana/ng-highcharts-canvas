@@ -1,6 +1,18 @@
 // /* You can add global styles to this file, and also import other style files */
 @import "modern-normalize/modern-normalize.css";
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+// Корневой тег приложения
+app-root {
+  display: block;
+  height: 100%;
+}
+
 // *, *::before, *::after {
 //   margin: 0;
 //   padding: 0;
