@@ -1,5 +1,15 @@
-// /* You can add global styles to this file, and also import other style files */
-@import "modern-normalize/modern-normalize.css";
+@use '@angular/material' as mat;
+
+// Включаем базовые стили
+@include mat.core();
+
+// Определяем свою цветовую палитру (Material 3)
+$my-theme: mat.define-theme((color: (theme-type: light, // или dark
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: (brand-family: 'Roboto, sans-serif',
+        bold-weight: 700)));
 
 html,
 body {
@@ -7,39 +17,20 @@ body {
   margin: 0;
 }
 
+// Применяем тему ко всем компонентам
+html {
+  @include mat.all-component-themes($my-theme);
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // Используем системную переменную фона из Material 3
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
 // Корневой тег приложения
 app-root {
   display: block;
   height: 100%;
 }
-
-// *, *::before, *::after {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box; // Чтобы padding не раздувал ширину элементов
-// }
-
-// html, body {
-//   height: 100%; // Полезно для Angular-приложений
-// }
-
-// ul, ol {
-//   list-style: none;
-// }
-
-// a {
-//   text-decoration: none;
-//   color: inherit; // Ссылка будет цвета родительского текста
-// }
-
-// button {
-//   background: none;
-//   border: none;
-//   padding: 0;
-//   cursor: pointer;
-//   font: inherit; // Кнопка наследует шрифт сайта
-// }
-
-// input {
-//   font: inherit;
-// }
