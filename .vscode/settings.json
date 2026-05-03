@@ -1,6 +1,0 @@
-{
-    "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.format"],
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "eslint.validate": ["json"]
-}
