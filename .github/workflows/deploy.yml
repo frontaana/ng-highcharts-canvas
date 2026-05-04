@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
-  # Позволяет запускать деплой вручную из вкладки Actions
   workflow_dispatch:
 
 permissions:
@@ -11,41 +10,42 @@ permissions:
   pages: write
   id-token: write
 
-# Отменяет текущий запуск, если вы запушили новый код до завершения старого билда
 concurrency:
   group: 'pages'
   cancel-in-progress: true
 
 jobs:
   build-and-deploy:
+    # 1. Исправляет ошибку "Missing environment"
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
-    env:
-      # Явно заставляем экшены использовать Node.js 24
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
+      # 2. Обновленные версии экшенов (v5+), которые сами работают на Node 24
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 24 # Обновлено до актуальной версии
+          node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build Angular Project
-        # Обязательно проверьте путь dist/apps/admin-panel/browser, если используете новый Angular
         run: npx nx build admin-panel --prod --base-href /ng-highcharts-canvas/
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5 # Обновлено до v5
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # ВАЖНО: Если в dist создается папка /browser, добавьте её в путь ниже
           path: dist/apps/admin-panel/browser
 
       - name: Deploy to GitHub Pages
