@@ -21,12 +21,12 @@
           {
             "glob": "**/*",
             "input": "apps/admin-panel/public",
-            "output": "/browser"
+            "output": "/"
           },
           {
             "glob": "index.html",
             "input": "apps/admin-panel/src",
-            "output": "/browser/404.html"
+            "output": "/"
           }
         ],
         "styles": ["apps/admin-panel/src/styles.scss"],
