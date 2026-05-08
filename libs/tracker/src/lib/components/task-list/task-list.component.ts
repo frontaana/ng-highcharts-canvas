@@ -1,10 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { TasksService } from '../../../../../shared/src/lib/services/items.service';
 import { Categories } from '../../models/task.model';
 import { DistributeColorPipe } from '../../pipes/distribute-color.pipe';
 
 @Component({
-  selector: 'app-task-list',
+  selector: 'tracker-lib-task-list',
   standalone: true,
   imports: [DistributeColorPipe],
   templateUrl: './task-list.component.html',

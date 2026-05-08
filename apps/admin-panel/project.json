@@ -2,7 +2,7 @@
   "name": "admin-panel",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "admin-panel",
   "sourceRoot": "admin-panel/src",
   "tags": [],
   "targets": {

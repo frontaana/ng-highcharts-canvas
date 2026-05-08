@@ -2,7 +2,7 @@
   "name": "knowledge-base",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/knowledge-base/src",
-  "prefix": "lib",
+  "prefix": "knowledge-base-lib",
   "projectType": "library",
   "tags": [],
   "targets": {

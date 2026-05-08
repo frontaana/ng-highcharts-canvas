@@ -12,11 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
-import { TasksService } from '../../../../../shared/src/lib/services/items.service';
 import { Categories, Priority, Task } from '../../models/task.model';
 
 @Component({
-  selector: 'app-task-form',
+  selector: 'tracker-lib-task-form',
   standalone: true,
   imports: [
     CommonModule,
