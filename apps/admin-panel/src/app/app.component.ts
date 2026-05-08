@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
+interface NavItem {
+  label: string;
+  icon: string;
+  route: string;
+}
+
 @Component({
   standalone: true,
   imports: [NxWelcomeComponent, RouterModule],

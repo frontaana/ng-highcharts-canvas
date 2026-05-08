@@ -1,4 +1,4 @@
-import { IdentifiedEntity } from '../../../../shared/src/lib/models/basic.models';
+import { IdentifiedEntity } from '@ng-highcharts-canvas/shared';
 
 export const RISK_I18N: string = 'Risk';
 

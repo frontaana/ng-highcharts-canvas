@@ -1,3 +1,4 @@
+<!--
 <div class="kb-wrapper">
   <lib-article-form />
 
@@ -9,7 +10,38 @@
       <mat-spinner diameter="50" />
     </div>
     } @else {
-    <lib-article-list [articles]="store.filteredArticles()" />
+     
+    <lib-article-list [articles]="store.filteredArticles()"/>
     }
   </div>
 </div>
+ -->
+
+<mat-toolbar color="primary" class="header">
+  <h2 class="logo">Knowledge base</h2>
+
+  <div class="menu-items">
+    <a
+      mat-button
+      routerLink="list"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <mat-icon>list</mat-icon>
+      Общий список статей
+    </a>
+
+    <a mat-button routerLink="add" routerLinkActive="active-link">
+      <mat-icon>add_circle</mat-icon>
+      Создать статью
+    </a>
+  </div>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button title="Настройки">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

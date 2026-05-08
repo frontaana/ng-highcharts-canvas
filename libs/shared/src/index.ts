@@ -1,2 +1,2 @@
-// export * from './lib/components/shared/shared.component';
+export * from './lib/models/basic.models';
 export * from './lib/services/items.service';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ItemsService } from 'libs/shared/src/lib/services/items.service';
+import { ItemsService } from '@ng-highcharts-canvas/shared';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService extends ItemsService {

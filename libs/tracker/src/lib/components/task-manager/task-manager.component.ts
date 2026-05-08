@@ -6,7 +6,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { DistributeColorPipe } from '../../pipes/distribute-color.pipe';
 
 @Component({
-  selector: 'app-task-manager',
+  selector: 'tracker-lib-task-manager',
   standalone: true,
   imports: [
     DistributeColorPipe,
