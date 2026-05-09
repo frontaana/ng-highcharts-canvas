@@ -1,27 +1,76 @@
-# NgHighchartsCanvas
+# 🌌 My Universe (NgHighchartsCanvas)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Современная экосистема для продуктивности и непрерывного обучения разработчика. Проект представляет собой архитектурно сложную SPA-платформу, объединяющую персональный планировщик по сферам жизни (Life Wheel) и интерактивную базу знаний для подготовки к техническим собеседованиям.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🎯 Архитектурная ценность и стек
 
-## Code scaffolding
+Проект спроектирован по канонам промышленной разработки крупномасштабных приложений. Главная ценность — демонстрация продвинутого владения архитектурой **Nx Monorepo**, современным **Angular 18+** и гибридным стейт-менеджментом.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Ключевые технологии и версии:
 
-## Build
+- **Монорепозиторий:** `Nx v20.0.0` (Project Crystal, автоматическое управление графом зависимостей)
+- **Фреймворк:** `Angular v18.2.0` (Standalone-архитектура, Строго типизированные формы, Signal-компоненты)
+- **Стиль и UI:** `Angular Material v18.2.14` + `SCSS` (Кастомная UI-библиотека)
+- **Глобальный стейт (Админка):** `@ngxs/store v18.1.5` (Паттерн Command/Event на классах и декораторах)
+- **Локальный стейт (База знаний):** `@ngrx/signals v18.0.0` (Новейший функциональный Signal Store)
+- **Среда тестирования:** `Jest` (Unit-тесты) + `Cypress` (E2E-тесты)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🏗️ Микрофронтенд-архитектура (Граф Nx)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Код разделен на независимые изолированные слои, что исключает циклические зависимости и гарантирует масштабируемость:
 
-## Running end-to-end tests
+```text
+apps/
+  └── admin-panel/       # Приложение-оболочка (Shell). Предоставляет глобальный Layout и роутинг.
+libs/
+  ├── knowledge-base/    # Feature-либа: База знаний (Signal Store, Route-Scoped DI, Strict Forms)
+  ├── todo-tracker/      # Feature-либа: Планировщик задач по сферам жизни (Life Planner)
+  ├── tracker/           # Feature-либа: Трекер прогресса обучения
+  ├── shared/            # Data-Access либа: Общие модели данных, переиспользуемые Enum, базовый ItemsService
+  └── shared/ui/         # UI-Kit либа: Презентационные Dumb-компоненты (Sidebar, Header, графики)
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## ⚡ Функциональные особенности проекта
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Гибридный стейт-менеджмент:** Управление глобальными критическими действиями через **NGXS (Redux)** в админке, и легковесное, реактивное управление локальными данными через **NgRx Signal Store** в изолированных модулях.
+2. **Универсальный Data-Access слой:** Базовый сервис `ItemsService` инкапсулирует абстрактную логику обработки данных и автоматического маппинга структур (трансформация Object-to-Array для Firebase RTDB и поддержка REST для JSON Server).
+3. **Строгая инкапсуляция (DI):** Библиотеки не зависят от окружения приложений. Конкретные API эндпоинты поставляются в либы "на лету" через механизмы `InjectionToken`.
+4. **Strict Typed Forms:** Формы добавления контента написаны с использованием `NonNullableFormBuilder` и жестких интерфейсов, исключающих появление `null` на этапе компиляции.
+5. **Route-Scoped Stores:** Сторы инициализируются в конфигурации роутера, живут ровно столько, сколько открыта вкладка, и автоматически уничтожаются, исключая утечки памяти.
+6. **Smart/Dumb паттерн:** Четкое разделение компонентов на презентационные (принимают сигналы через `input.required()`) и контейнерные.
+
+---
+
+## 🌍 CI/CD и синхронизация данных
+
+Проект настроен на бесшовную работу в двух режимах (Dev/Prod) через автоматическую подмену конфигураций Nx:
+
+- **Локальная разработка:** Фронтенд общается с локальным `json-server` (Mocks БД в файле `db.json`) через настроенный `proxy.conf.json`.
+- **Продакшен (GitHub Pages):** Настроен автоматический пайплайн через GitHub Actions. При сборке конфигурация переключается на **Firebase Realtime Database REST API**, обеспечивая полноценное сохранение, чтение и модификацию данных в облаке прямо со статического хостинга.
+
+---
+
+## 🚀 Команды для локального запуска
+
+Для одновременного запуска Angular-приложения и mock-сервера бэкенда используется утилита `concurrently`:
+
+```bash
+# Клонировать репозиторий
+git clone <url-твоего-репозитория>
+cd ng-highcharts-canvas
+
+# Установить зависимости (с учетом CI-разрешений peer-зависимостей)
+npm install --legacy-peer-deps
+
+# Запустить всю экосистему (Angular App на порту 4200 + JSON Server на порту 3000)
+npm run start:all
+
+# Посмотреть интерактивный граф зависимостей Nx архитектуры проекта
+npx nx graph
+```
