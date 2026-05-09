@@ -1,0 +1,1 @@
+import{Fb as n,Gb as o,Wb as s,_b as r,na as a}from"./chunk-AQPTDJKM.js";var d=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=a({type:t,selectors:[["admin-panel-dashboard"]],standalone:!0,features:[r],decls:2,vars:0,template:function(e,m){e&1&&(n(0,"p"),s(1,"dashboard-page works!"),o())}})};export{d as DashboardComponent};
