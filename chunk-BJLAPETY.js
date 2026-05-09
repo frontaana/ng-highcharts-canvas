@@ -1,0 +1,1 @@
+import{d as b,e as c}from"./chunk-HX5QKTGE.js";import"./chunk-MG3CIGQG.js";import"./chunk-EFSOO2OV.js";import{M as a}from"./chunk-HCFARJKK.js";import"./chunk-BTZZSXL7.js";import"./chunk-AQPTDJKM.js";export{a as KNOWLEDGE_BASE_URL,b as KnowledgeBaseComponent,c as knowledgeBaseRoutes};
